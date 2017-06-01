@@ -118,7 +118,7 @@ button {
           return false;
         });
         socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
+          $('#messages').append($('<li class="list-group-item list-group-item-success">').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
         });
       });
