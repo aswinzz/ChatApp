@@ -110,8 +110,7 @@ button {
     </form>
   </div>
 </div>
- 
-<script>
+  <script>
       $(function () {
         var socket = io();
         $('form').submit(function(){
@@ -120,7 +119,7 @@ button {
           return false;
         });
         socket.on('chat message', function(msg){
-          $('#messages').append($('<div class="chat_bubble-2">').text(msg).'</div>');
+          $('#messages').append($('<li>').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
         });
       });
