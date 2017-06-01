@@ -23,25 +23,12 @@ body{height:100%;margin:0;padding:0;background:url(http://kriswhitewrites.com/wp
   <body>
    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      $(function () {
-        var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
-        });
-      });
-    </script>
+    
  
 <div class="chat">
   <div class="chat_header">
     <img class="chat_avatar" src="http://www.naturaloil.ph/wp-content/uploads/2015/11/John_Doe.jpg"></img>Chat
-    <div class="chat_status">Is Online </div>
+    <div class="chat_status">ONLINE</div>
   </div>
   <div id="messages" class="chat_s">
     
@@ -50,6 +37,19 @@ body{height:100%;margin:0;padding:0;background:url(http://kriswhitewrites.com/wp
     <input id="m" placeholder="Type here..." class="chat_text"><button class="chat_submit fa fa-send"></button>
   </div>
 </div>
-
+<script>
+      $(function () {
+        var socket = io();
+        $('form').submit(function(){
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<div class="chat_bubble-2">').text(msg).'</div>');
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+      });
+    </script>
   </body>
 </html>
