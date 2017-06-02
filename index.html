@@ -90,14 +90,8 @@ button {
   margin-top: 20px;
 }
 ul {
-    width:100%;
-    list-style-type: none;
-    padding:18px;
-    position:absolute;
-    bottom:32px;
-    display:flex;
-    flex-direction: column;
-
+    background: #3399ff;
+    padding: 20px;
 }
 ul li {
     background: #cce5ff;
@@ -108,6 +102,49 @@ ul.demo {
     margin: 0;
     padding: 0;
 }
+p {
+  margin: 0 0 0.5em;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  background: @grey;
+  max-width: 75%;
+  clear: both;
+  position: relative;
+  
+  &.them {
+    float: left;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      left: -0.5em;
+      bottom: 0;
+      width: 0.5em;
+      height: 1em;
+      border-right: 0.5em solid @grey;
+      border-bottom-right-radius: 1em 0.5em;
+    }
+  }
+  
+  &.me {
+    float: right;
+    background-color: @blue;
+    color: white;
+   
+    &::after {
+      content: "";
+      position: absolute;
+      right: -0.5em;
+      bottom: 0;
+      width: 0.5em;
+      height: 1em;
+      border-left: 0.5em solid @blue;
+      border-bottom-left-radius: 1em 0.5em;
+    }
+  }
+}
+
+
  </style>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
@@ -137,7 +174,7 @@ ul.demo {
           return false;
         });
         socket.on('chat message', function(msg){
-          $('#messages').append($('<li class="list-group-item list-group-item-success">').text(msg));
+          $('#messages').append($('<li><p class="me">').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
         });
       });
