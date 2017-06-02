@@ -154,7 +154,7 @@ p {
     
 <div class="chat-log">
   <div class="log">
-  <ul class="demo" id="messages"></ul>
+  <div id="messages" class="me"></div>
   </div>
   <div class="input">
     <form>
@@ -174,7 +174,7 @@ p {
           return false;
         });
         socket.on('chat message', function(msg){
-          $('#messages').append($('<li><p class="me">').text(msg));
+          $('#messages').append($('<p class="me">').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
         });
       });
